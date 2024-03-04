@@ -17,3 +17,5 @@
 -Edit templates
 
 -Figma styling
+
+-Screenshot to Text for prompts
