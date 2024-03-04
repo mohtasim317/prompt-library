@@ -20,5 +20,9 @@
 
 -Add direct ChatGPT functionality using their API
 
+-User creation/authentication
+
+-Databases
+
 **Figma**
 -https://www.figma.com/file/wPIV7otAsEMFw9So5vF1LZ/Prompt-Library?type=design&node-id=0-1&mode=design&t=QNZ9P9mOqtkJT5oX-0
