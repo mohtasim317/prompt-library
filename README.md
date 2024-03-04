@@ -1,10 +1,19 @@
-To-Do List(MVP):
+**To-Do List(MVP):**
+
 -Input field to add templates
+
 -Store templates
+
 -Create dropdown component
+
 -Add functionality for adding dropdown to template 
 
-After:
+
+
+**After:**
+
 -Tabs
+
 -Edit templates
+
 -Figma styling
