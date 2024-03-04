@@ -19,3 +19,6 @@
 -Figma styling
 
 -Screenshot to Text for prompts
+
+-Add direct ChatGPT functionality using their API
+
