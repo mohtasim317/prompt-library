@@ -1,0 +1,4 @@
+.PromptList {
+    display: flex;
+    flex-direction: column;
+}

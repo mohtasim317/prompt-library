@@ -5,7 +5,7 @@ import PromptTile from "../PromptTile/PromptTile";
 function PromptList() {
   return (
     <>
-      <div>
+      <div className="PromptList">
         {promptData.map((prompt) => {
           return <PromptTile {...prompt} />;
         })}
