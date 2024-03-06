@@ -1,30 +1,30 @@
-# React + TypeScript + Vite
+**To-Do List(MVP):**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+-Input field to add templates
 
-Currently, two official plugins are available:
+-Store templates
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+-Create dropdown component
 
-## Expanding the ESLint configuration
+-Add functionality for adding dropdown to template 
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+**After:**
 
-- Configure the top-level `parserOptions` property like this:
+-Tabs
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+-Edit templates
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+-Figma styling
+
+-Screenshot to Text for prompts
+
+-Add direct ChatGPT functionality using their API
+
+-User creation/authentication
+
+-Databases
+
+-Providing users with template/start off point for topic based on the folder category
+
+**Figma**
+-https://www.figma.com/file/wPIV7otAsEMFw9So5vF1LZ/Prompt-Library?type=design&node-id=0-1&mode=design&t=QNZ9P9mOqtkJT5oX-0
