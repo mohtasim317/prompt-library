@@ -21,7 +21,7 @@ function FolderBar() {
               return <div>{folder}</div>;
             })
           ) : (
-            <div>Add a new folder</div>
+            <div>No Folders Added</div>
           )}
         </div>
 
