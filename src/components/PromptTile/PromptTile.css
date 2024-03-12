@@ -34,4 +34,5 @@
   padding-right: 20px;
   max-height: 133px;
   width: 500px;
+  overflow: hidden;
 }

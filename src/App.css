@@ -1,6 +1,30 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 32px;
-  text-align: center;
+.App {
+  display: grid;
+  grid-template-columns: 15% 45% 35%;
+  grid-template-rows: 100px 2fr;
+  gap: 20px;
+  margin: 20px 2%;
+  justify-content: center;
+}
+
+.NavRow {
+  background-color: red;
+  grid-area: 1 / 1 / 2 / 4;
+  min-height: 100px;
+}
+
+.SideBar {
+  background-color: green;
+  grid-area: 2 / 1 / 6 / 2;
+}
+
+.PromptList {
+  background-color: brown;
+  grid-area: 2 / 2 / 6 / 3;
+  overflow: hidden;
+}
+
+.Modal {
+  background-color: blue;
+  grid-area: 2 / 3 / 6 / 4;
 }
