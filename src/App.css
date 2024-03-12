@@ -13,8 +13,8 @@
   min-height: 100px;
 }
 
-.SideBar {
-  background-color: green;
+.FolderBar {
+  border: 1px solid grey;
   grid-area: 2 / 1 / 6 / 2;
 }
 
