@@ -7,7 +7,7 @@ function PromptList() {
     <>
       <div className="PromptList">
         {promptData.map((prompt) => {
-          return <PromptTile {...prompt} />;
+          return <PromptTile {...prompt} key={prompt.id} />;
         })}
       </div>
     </>
