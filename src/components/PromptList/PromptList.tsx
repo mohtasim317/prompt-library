@@ -5,7 +5,7 @@ import PromptTile from "../PromptTile/PromptTile";
 function PromptList() {
   return (
     <div className="PromptList">
-      <div>
+      <div className="ButtonBar">
         <button>New Prompt</button>
         <button>Create New Dropdown</button>
       </div>
