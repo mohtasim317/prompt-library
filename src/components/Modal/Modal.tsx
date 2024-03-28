@@ -1,8 +1,9 @@
 import { ModalPropsType } from "../../types";
+import CreateDropdown from "./Views/CreateDropdown/CreateDropdown";
 import "./Modal.css";
 
-const obj = {
-  createDropdown: <button>asd</button>,
+const ModalViews = {
+  createDropdown: <CreateDropdown />,
 };
 
 function Modal({ setShowModal, type }: ModalPropsType) {
@@ -10,7 +11,7 @@ function Modal({ setShowModal, type }: ModalPropsType) {
     <div className="ModalBackground">
       <div className="ModalContent">
         <button onClick={() => setShowModal(false)}>Close</button>
-        {obj[type as keyof typeof obj]}
+        {ModalViews[type as keyof typeof ModalViews]}
       </div>
     </div>
   );
