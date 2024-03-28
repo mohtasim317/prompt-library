@@ -1,9 +1,12 @@
+import { ModalPropsType } from "../../types";
 import "./Modal.css";
 
-function Modal() {
+function Modal({ setShowModal }: ModalPropsType) {
   return (
-    <div className="Modal">
-      <>Modal</>
+    <div className="ModalBackground">
+      <div className="ModalContent">
+        <button onClick={() => setShowModal(false)}>Close</button>
+      </div>
     </div>
   );
 }
