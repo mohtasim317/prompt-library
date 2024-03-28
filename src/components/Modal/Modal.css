@@ -1,16 +1,17 @@
 .ModalContent {
   background-color: white;
   width: 30%;
-  height: 30%;
-  position: fixed;
+  height: 40%;
   color: black;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  top: 30%;
-  left: 30%;
   z-index: 1;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .ModalBackground {
