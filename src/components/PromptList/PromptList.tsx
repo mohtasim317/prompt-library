@@ -4,13 +4,15 @@ import PromptTile from "../PromptTile/PromptTile";
 
 function PromptList() {
   return (
-    <>
-      <div className="PromptList">
-        {promptData.map((prompt) => {
-          return <PromptTile {...prompt} key={prompt.id} />;
-        })}
+    <div className="PromptList">
+      <div>
+        <button>New Prompt</button>
+        <button>Create New Dropdown</button>
       </div>
-    </>
+      {promptData.map((prompt) => {
+        return <PromptTile {...prompt} />;
+      })}
+    </div>
   );
 }
 
