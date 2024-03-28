@@ -2,7 +2,7 @@ import "./FolderBar.css";
 import { useState } from "react";
 
 function FolderBar() {
-  const [showModal, setShowModal] = useState(false);
+  const [showInputBox, setShowInputBox] = useState(false);
   const [folderList, setFolderList] = useState<string[]>([]);
   const [inputFolderName, setInputFolderName] = useState<string>("");
 
@@ -25,11 +25,11 @@ function FolderBar() {
           )}
         </div>
 
-        <button onClick={() => setShowModal((prevState) => !prevState)}>
+        <button onClick={() => setShowInputBox((prevState) => !prevState)}>
           New Folder
         </button>
 
-        {showModal && (
+        {showInputBox && (
           <input
             type="text"
             onChange={(event) => setInputFolderName(event.target.value)}
