@@ -12,7 +12,7 @@ function App() {
       <FolderBar />
       <PromptList setShowModal={setShowModal} />
       <div className="Modal">Modal PlaceHolder</div>
-      {showModal && <Modal setShowModal={setShowModal} />}
+      {showModal && <Modal type="createDropdown" setShowModal={setShowModal} />}
     </div>
   );
 }

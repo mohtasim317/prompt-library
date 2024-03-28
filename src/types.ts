@@ -10,4 +10,5 @@ export interface PromptListPropsType {
 
 export interface ModalPropsType {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+  type: string
 }
