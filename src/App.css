@@ -1,3 +1,7 @@
+body {
+  margin: 0px;
+}
+
 .App {
   display: grid;
   grid-template-columns: 15% 45% 35%;
@@ -8,7 +12,7 @@
 }
 
 .NavRow {
-  background-color: red;
+  border: 1px solid grey;
   grid-area: 1 / 1 / 2 / 4;
   min-height: 100px;
 }
@@ -19,12 +23,12 @@
 }
 
 .PromptList {
-  background-color: brown;
+  border: 1px solid grey;
   grid-area: 2 / 2 / 6 / 3;
   overflow: hidden;
 }
 
 .Modal {
-  background-color: blue;
+  border: 1px solid grey;
   grid-area: 2 / 3 / 6 / 4;
 }
