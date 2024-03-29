@@ -21,26 +21,3 @@ export function PromptContextProvider({
     </PromptContext.Provider>
   );
 }
-
-// import React, { createContext, useState } from "react";
-
-// interface PromptContextValue {
-//   selectedId: number | null;
-//   setSelectedId: React.Dispatch<React.SetStateAction<number | null>>;
-// }
-
-// export const PromptContext = createContext<PromptContextValue | null>(null);
-
-// export function PromptContextProvider({
-//   children,
-// }: {
-//   children: React.ReactNode;
-// }): JSX.Element {
-//   const [selectedId, setSelectedId] = useState<number | null>(null);
-
-//   return (
-//     <PromptContext.Provider value={{ selectedId, setSelectedId }}>
-//       {children}
-//     </PromptContext.Provider>
-//   );
-// }

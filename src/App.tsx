@@ -5,6 +5,8 @@ import PromptForm from "./components/PromptForm/PromptForm";
 import { PromptContextProvider } from "./PromptContext";
 import { useState } from "react";
 import Modal from "./components/Modal/Modal";
+import PromptForm from "./components/PromptForm/PromptForm";
+import { PromptContextProvider } from "./PromptContext";
 
 function App() {
   const [showModal, setShowModal] = useState(false);
