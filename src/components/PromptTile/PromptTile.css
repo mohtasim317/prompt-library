@@ -4,6 +4,11 @@
   flex-direction: column;
   justify-content: space-between;
   min-height: 200px;
+
+  &.is-selected {
+    border: 1px solid #83adfc;
+    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+  }
 }
 
 .PromptTile:last-child {
