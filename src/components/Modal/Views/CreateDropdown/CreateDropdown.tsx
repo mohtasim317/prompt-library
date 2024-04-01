@@ -29,7 +29,7 @@ export default function CreateDropdown() {
   }
 
   return (
-    <div className="">
+    <div className="CreateDropdownView">
       <div>Dropdown Title:</div>
       <input value={title} onChange={onInputChange}></input>
       <div>Add Dropdown options:</div>
