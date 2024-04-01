@@ -1,11 +1,15 @@
-import * as React from "react";
+import { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
+import { DropdownProps, FilmOptionType } from "../../types";
 
 const filter = createFilterOptions<FilmOptionType>();
 
-export default function Dropdown() {
-  const [value, setValue] = React.useState<FilmOptionType | null>(null);
+export default function Dropdown({
+  currentDropdownOptions,
+  setCurrentDropdownOptions,
+}: DropdownProps) {
+  const [value, setValue] = useState<FilmOptionType | null>(null);
 
   return (
     <Autocomplete
@@ -13,15 +17,16 @@ export default function Dropdown() {
       onChange={(event, newValue) => {
         if (typeof newValue === "string") {
           setValue({
-            title: newValue,
+            dropdownOption: newValue,
           });
         } else if (newValue && newValue.inputValue) {
           setValue({
-            title: newValue.inputValue,
+            dropdownOption: newValue.inputValue,
           });
-          top100Films.push({ title: newValue.inputValue });
-        } else {
-          setValue(newValue);
+          setCurrentDropdownOptions((prevState) => [
+            ...prevState,
+            { dropdownOption: newValue.inputValue ?? "" },
+          ]);
         }
       }}
       filterOptions={(options, params) => {
@@ -30,12 +35,12 @@ export default function Dropdown() {
         const { inputValue } = params;
 
         const isExisting = options.some(
-          (option) => inputValue === option.title
+          (option) => inputValue === option.dropdownOption
         );
         if (inputValue !== "" && !isExisting) {
           filtered.push({
             inputValue,
-            title: `Add "${inputValue}"`,
+            dropdownOption: `Add "${inputValue}"`,
           });
         }
 
@@ -44,7 +49,7 @@ export default function Dropdown() {
       selectOnFocus
       clearOnBlur
       handleHomeEndKeys
-      options={top100Films}
+      options={currentDropdownOptions}
       getOptionLabel={(option) => {
         if (typeof option === "string") {
           return option;
@@ -52,10 +57,11 @@ export default function Dropdown() {
         if (option.inputValue) {
           return option.inputValue;
         }
-        return option.title;
+        return option.dropdownOption;
       }}
-      renderOption={(props, option) => <li {...props}>{option.title} </li>}
-      sx={{ width: 300 }}
+      renderOption={(props, option) => (
+        <li {...props}>{option.dropdownOption} </li>
+      )}
       freeSolo
       renderInput={(params) => (
         <TextField {...params} label="Add Dropdown options" />
@@ -63,18 +69,3 @@ export default function Dropdown() {
     />
   );
 }
-
-interface FilmOptionType {
-  inputValue?: string;
-  title: string;
-}
-
-const top100Films: FilmOptionType[] = [
-  { title: "The Shawshank Redemption" },
-  { title: "The Godfather" },
-  { title: "The Godfather: Part II" },
-  { title: "The Dark Knight" },
-  { title: "12 Angry Men" },
-  { title: "Schindler's List" },
-  { title: "Pulp Fiction" },
-];

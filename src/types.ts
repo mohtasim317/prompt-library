@@ -13,10 +13,22 @@ export interface PromptListPropsType {
 
 export interface ModalPropsType {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
-  type: string
+  type: string;
 }
 
 export interface PromptContextInterface {
   setSelectedId: Dispatch<SetStateAction<number | null>>;
   selectedId: number | null;
+}
+
+export interface FilmOptionType {
+  inputValue?: string;
+  dropdownOption: string;
+}
+
+export interface DropdownProps {
+  currentDropdownOptions: FilmOptionType[];
+  setCurrentDropdownOptions: React.Dispatch<
+    React.SetStateAction<FilmOptionType[]>
+  >;
 }
