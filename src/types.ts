@@ -19,16 +19,22 @@ export interface ModalPropsType {
 export interface PromptContextInterface {
   setSelectedId: Dispatch<SetStateAction<number | null>>;
   selectedId: number | null;
+  dropdownsList: TitleAndDropDownType;
+  setDropdownsList: React.Dispatch<React.SetStateAction<TitleAndDropDownType>>;
 }
 
-export interface FilmOptionType {
+export interface DropdownOptionType {
   inputValue?: string;
   dropdownOption: string;
 }
 
 export interface DropdownProps {
-  currentDropdownOptions: FilmOptionType[];
+  currentDropdownOptions: DropdownOptionType[];
   setCurrentDropdownOptions: React.Dispatch<
-    React.SetStateAction<FilmOptionType[]>
+    React.SetStateAction<DropdownOptionType[]>
   >;
+}
+
+export interface TitleAndDropDownType {
+  [title: string]: DropdownOptionType[];
 }

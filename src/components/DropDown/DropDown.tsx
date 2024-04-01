@@ -1,15 +1,15 @@
 import { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
-import { DropdownProps, FilmOptionType } from "../../types";
+import { DropdownProps, DropdownOptionType } from "../../types";
 
-const filter = createFilterOptions<FilmOptionType>();
+const filter = createFilterOptions<DropdownOptionType>();
 
 export default function Dropdown({
   currentDropdownOptions,
   setCurrentDropdownOptions,
 }: DropdownProps) {
-  const [value, setValue] = useState<FilmOptionType | null>(null);
+  const [value, setValue] = useState<DropdownOptionType | null>(null);
 
   return (
     <Autocomplete
@@ -25,8 +25,10 @@ export default function Dropdown({
           });
           setCurrentDropdownOptions((prevState) => [
             ...prevState,
-            { dropdownOption: newValue.inputValue ?? "" },
+            { dropdownOption: newValue.inputValue as string },
           ]);
+        } else {
+          setValue(newValue);
         }
       }}
       filterOptions={(options, params) => {
@@ -47,7 +49,7 @@ export default function Dropdown({
         return filtered;
       }}
       selectOnFocus
-      clearOnBlur
+      clearOnBlur={true}
       handleHomeEndKeys
       options={currentDropdownOptions}
       getOptionLabel={(option) => {
