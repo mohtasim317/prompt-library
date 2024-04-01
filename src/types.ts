@@ -16,11 +16,14 @@ export interface ModalPropsType {
   type: string;
 }
 
+export interface DropdownContextInterface {
+  dropdownsList: TitleAndDropDownType;
+  setDropdownsList: React.Dispatch<React.SetStateAction<TitleAndDropDownType>>;
+}
+
 export interface PromptContextInterface {
   setSelectedId: Dispatch<SetStateAction<number | null>>;
   selectedId: number | null;
-  dropdownsList: TitleAndDropDownType;
-  setDropdownsList: React.Dispatch<React.SetStateAction<TitleAndDropDownType>>;
 }
 
 export interface DropdownOptionType {

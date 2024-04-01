@@ -1,7 +1,10 @@
 import { useContext, useState } from "react";
 import Dropdown from "../../../DropDown/DropDown";
-import { DropdownOptionType, PromptContextInterface } from "../../../../types";
-import { PromptContext } from "../../../../PromptContext";
+import {
+  DropdownContextInterface,
+  DropdownOptionType,
+} from "../../../../types";
+import { DropdownContext } from "../../../../Context/DropdownContext";
 
 export default function CreateDropdown() {
   const [currentDropdownOptions, setCurrentDropdownOptions] = useState<
@@ -11,11 +14,11 @@ export default function CreateDropdown() {
   const [title, setTitle] = useState<string>("");
 
   const { dropdownsList, setDropdownsList } = useContext(
-    PromptContext
-  ) as PromptContextInterface;
+    DropdownContext
+  ) as DropdownContextInterface;
 
   function handleSubmit() {
-    if (!dropdownsList[title]) {
+    if (!dropdownsList[title] && title !== "") {
       setDropdownsList((prev) => {
         return { ...prev, [title]: currentDropdownOptions };
       });

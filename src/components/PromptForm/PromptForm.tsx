@@ -1,6 +1,6 @@
 import "./PromptForm.scss";
 import { useContext } from "react";
-import { PromptContext } from "../../PromptContext";
+import { PromptContext } from "../../Context/PromptContext";
 import { PromptContextInterface } from "../../types";
 
 function PropmtForm() {
