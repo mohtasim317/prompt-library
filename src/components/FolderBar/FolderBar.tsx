@@ -1,10 +1,16 @@
+import { DropdownContext } from "../../Context/DropdownContext";
+import { DropdownContextInterface } from "../../types";
 import "./FolderBar.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 function FolderBar() {
   const [showInputBox, setShowInputBox] = useState(false);
   const [folderList, setFolderList] = useState<string[]>([]);
   const [inputFolderName, setInputFolderName] = useState<string>("");
+
+  const { dropdownsList } = useContext(
+    DropdownContext
+  ) as DropdownContextInterface;
 
   const handleKeyDown = (event: { key: string }) => {
     if (event.key === "Enter") {
@@ -15,7 +21,7 @@ function FolderBar() {
   return (
     <>
       <div className="FolderandDropDownSection">
-        <div>
+        <div className="FolderSection">
           <div>
             {folderList.length > 0 ? (
               folderList.map((folder) => {
@@ -25,10 +31,11 @@ function FolderBar() {
               <div>No Folders Added</div>
             )}
           </div>
-
-          <button onClick={() => setShowInputBox((prevState) => !prevState)}>
-            New Folder
-          </button>
+          <div>
+            <button onClick={() => setShowInputBox((prevState) => !prevState)}>
+              New Folder
+            </button>
+          </div>
 
           {showInputBox && (
             <input
@@ -37,6 +44,25 @@ function FolderBar() {
               value={inputFolderName}
               onKeyDown={handleKeyDown}
             />
+          )}
+        </div>
+        <div className="DropdownSection">
+          {Object.keys(dropdownsList).length === 0 ? (
+            <div>No Dropdown added</div>
+          ) : (
+            <div>
+              {Object.keys(dropdownsList).map((key) => {
+                const dropdownOptions = Object.values(dropdownsList[key]);
+                return (
+                  <div className="DropDownView">
+                    {key}:
+                    {dropdownOptions.map((dropdownOptionObject) => {
+                      return <div>{dropdownOptionObject.dropdownOption}</div>;
+                    })}
+                  </div>
+                );
+              })}
+            </div>
           )}
         </div>
       </div>
