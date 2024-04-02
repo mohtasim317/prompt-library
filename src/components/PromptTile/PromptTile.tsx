@@ -4,13 +4,21 @@ import { PromptContext } from "../../PromptContext";
 import { useContext } from "react";
 
 function PromptTile({ id, title, text, folder }: MockDataType) {
-  const { setSelectedId } = useContext(PromptContext) as PromptContextInterface;
+  const { selectedId, setSelectedId } = useContext(
+    PromptContext
+  ) as PromptContextInterface;
   const selectTile = (e: React.MouseEvent<HTMLDivElement>) => {
     const tileId = parseInt(e?.currentTarget.id);
-    setSelectedId(tileId);
+    if (selectedId != tileId) {
+      setSelectedId(tileId);
+    }
   };
   return (
-    <div className="PromptTile" onClick={selectTile} id={`${id}`}>
+    <div
+      className={"PromptTile" + (selectedId == id ? " is-selected" : "")}
+      onClick={selectTile}
+      id={`${id}`}
+    >
       <div className="TopRow">
         <div className="PromptTitle">{title}</div>
         <div className="PromptText">{text}</div>
