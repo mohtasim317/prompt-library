@@ -1,6 +1,6 @@
 import "./App.css";
 import PromptList from "./components/PromptList/PromptList";
-import FolderBar from "./components/FolderBar/FolderBar";
+import FolderAndDropdownSection from "./components/FolderAndDropdownSection/FolderAndDropdownSection";
 import { useState } from "react";
 import Modal from "./components/Modal/Modal";
 import PromptForm from "./components/PromptForm/PromptForm";
@@ -13,10 +13,10 @@ function App() {
     <DropdownContextProvider>
       <div className="App">
         <div className="NavRow">Nav Row Placeholder</div>
-        <FolderBar />
+        <FolderAndDropdownSection setShowModal={setShowModal} />
         <PromptContextProvider>
           <>
-            <PromptList setShowModal={setShowModal} />
+            <PromptList />
             <PromptForm />
             {showModal && (
               <Modal type="createDropdown" setShowModal={setShowModal} />

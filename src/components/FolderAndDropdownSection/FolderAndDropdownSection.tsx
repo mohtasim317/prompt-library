@@ -1,9 +1,14 @@
 import { DropdownContext } from "../../Context/DropdownContext";
-import { DropdownContextInterface } from "../../types";
-import "./FolderBar.css";
+import {
+  DropdownContextInterface,
+  FolderAndDropdownSectionPropsType,
+} from "../../types";
+import "./FolderAndDropdownSection.css";
 import { useContext, useState } from "react";
 
-function FolderBar() {
+function FolderAndDropdownSection({
+  setShowModal,
+}: FolderAndDropdownSectionPropsType) {
   const [showInputBox, setShowInputBox] = useState(false);
   const [folderList, setFolderList] = useState<string[]>([]);
   const [inputFolderName, setInputFolderName] = useState<string>("");
@@ -46,9 +51,12 @@ function FolderBar() {
             />
           )}
         </div>
+
         <div className="DropdownSection">
           {Object.keys(dropdownsList).length === 0 ? (
-            <div>No Dropdown added</div>
+            <>
+              <div>No Dropdown added</div>
+            </>
           ) : (
             <div>
               {Object.keys(dropdownsList).map((key) => {
@@ -65,9 +73,12 @@ function FolderBar() {
             </div>
           )}
         </div>
+        <button onClick={() => setShowModal((prevState) => !prevState)}>
+          Create New Dropdown
+        </button>
       </div>
     </>
   );
 }
 
-export default FolderBar;
+export default FolderAndDropdownSection;

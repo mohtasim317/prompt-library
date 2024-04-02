@@ -7,7 +7,7 @@ export interface MockDataType {
   folder: string;
 }
 
-export interface PromptListPropsType {
+export interface FolderAndDropdownSectionPropsType {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
