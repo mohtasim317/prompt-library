@@ -1,0 +1,21 @@
+.FolderandDropDownSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-content: space-around;
+}
+
+.FolderSection {
+  height: 50%;
+  overflow: auto;
+}
+
+.DropdownSection {
+  height: 50%;
+  overflow: auto;
+  border-top: 1px solid grey;
+}
+
+.DropDownView {
+  margin-bottom: 20px;
+}

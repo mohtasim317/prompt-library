@@ -1,6 +1,6 @@
 import "./PromptTile.css";
 import { MockDataType, PromptContextInterface } from "../../types";
-import { PromptContext } from "../../PromptContext";
+import { PromptContext } from "../../Context/PromptContext";
 import { useContext } from "react";
 
 function PromptTile({ id, title, text, folder }: MockDataType) {

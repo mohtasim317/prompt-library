@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { PromptContextInterface } from "./types";
+import { PromptContextInterface } from "../types";
 
 export const PromptContext = createContext<PromptContextInterface | null>(null);
 
