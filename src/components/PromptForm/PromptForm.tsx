@@ -24,7 +24,11 @@ function PropmtForm() {
   } else {
     formContent = (
       <>
-        <div className="prompt-title">Define Desires and Outcomes</div>
+        <input
+          className="prompt-title"
+          placeholder="Enter a title..."
+          autoFocus
+        ></input>
         <textarea
           className="prompt-content"
           placeholder="Enter prompt text..."
