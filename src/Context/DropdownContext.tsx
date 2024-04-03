@@ -10,7 +10,13 @@ export function DropdownContextProvider({
 }: {
   children: JSX.Element;
 }): JSX.Element {
-  const [dropdownsList, setDropdownsList] = useState<TitleAndDropDownType>({});
+  const [dropdownsList, setDropdownsList] = useState<TitleAndDropDownType>(
+    () => {
+      const savedDropdowns = localStorage.getItem("allDropdowns") || "{}";
+      const initialValue = JSON.parse(savedDropdowns);
+      return initialValue;
+    }
+  );
 
   return (
     <DropdownContext.Provider value={{ dropdownsList, setDropdownsList }}>

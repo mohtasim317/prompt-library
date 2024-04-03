@@ -9,7 +9,7 @@ function PromptList() {
         <button>New Prompt</button>
       </div>
       {promptData.map((prompt) => {
-        return <PromptTile {...prompt} />;
+        return <PromptTile {...prompt} key={`${prompt.title}`} />;
       })}
     </div>
   );

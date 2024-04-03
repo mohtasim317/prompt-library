@@ -19,3 +19,10 @@
 .DropDownView {
   margin-bottom: 20px;
 }
+
+.Top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 10px 50px;
+}
