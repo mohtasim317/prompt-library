@@ -20,8 +20,11 @@ export default function CreateDropdown() {
   function handleSubmit() {
     if (!dropdownsList[title] && title !== "") {
       setDropdownsList((prev) => {
-        return { ...prev, [title]: currentDropdownOptions };
+        const allDropdowns = { ...prev, [title]: currentDropdownOptions };
+        localStorage.setItem("allDropdowns", JSON.stringify(allDropdowns));
+        return allDropdowns;
       });
+
       setCurrentDropdownOptions([]);
       setTitle("");
     }

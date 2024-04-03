@@ -4,7 +4,7 @@ import {
   FolderAndDropdownSectionPropsType,
 } from "../../types";
 import "./FolderAndDropdownSection.css";
-import { useContext, useState } from "react";
+import { MouseEvent, useContext, useState } from "react";
 
 function FolderAndDropdownSection({
   setShowModal,
@@ -13,20 +13,29 @@ function FolderAndDropdownSection({
   const [folderList, setFolderList] = useState<string[]>([]);
   const [inputFolderName, setInputFolderName] = useState<string>("");
 
-  const { dropdownsList } = useContext(
+  const { dropdownsList, setDropdownsList } = useContext(
     DropdownContext
   ) as DropdownContextInterface;
 
-  const handleKeyDown = (event: { key: string }) => {
+  const handleKeyDown = (event: { key: string }): void => {
     if (event.key === "Enter") {
       setFolderList((prevFolderList) => [...prevFolderList, inputFolderName]);
     }
+  };
+
+  const removeDropdown = (event: MouseEvent<HTMLButtonElement>) => {
+    const buttonValue = (event.target as HTMLInputElement).value;
+    const newList = { ...dropdownsList };
+    delete newList[buttonValue];
+    setDropdownsList(newList);
+    localStorage.setItem("allDropdowns", JSON.stringify(newList));
   };
 
   return (
     <>
       <div className="FolderandDropDownSection">
         <div className="FolderSection">
+          <div>Folders</div>
           <div>
             {folderList.length > 0 ? (
               folderList.map((folder) => {
@@ -53,20 +62,22 @@ function FolderAndDropdownSection({
         </div>
 
         <div className="DropdownSection">
+          <div>Dropdowns</div>
           {Object.keys(dropdownsList).length === 0 ? (
             <>
               <div>No Dropdown added</div>
             </>
           ) : (
             <div>
-              {Object.keys(dropdownsList).map((key) => {
-                const dropdownOptions = Object.values(dropdownsList[key]);
+              {Object.keys(dropdownsList).map((property, idx) => {
                 return (
-                  <div className="DropDownView">
-                    {key}:
-                    {dropdownOptions.map((dropdownOptionObject) => {
-                      return <div>{dropdownOptionObject.dropdownOption}</div>;
-                    })}
+                  <div className="DropDownView" key={`${property} + ${idx}`}>
+                    <div className="Top">
+                      <div>{property}:</div>
+                      <button value={property} onClick={removeDropdown}>
+                        x
+                      </button>
+                    </div>
                   </div>
                 );
               })}
