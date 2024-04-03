@@ -17,7 +17,13 @@ function PropmtForm() {
         <div className="prompt-content">{formData.text}</div>
         <div className="prompt-footer">
           <button>Edit Template</button>
-          <button>Copy</button>
+          <button
+            onClick={async () => {
+              await navigator.clipboard.writeText(formData.text);
+            }}
+          >
+            Copy
+          </button>
         </div>
       </>
     );
