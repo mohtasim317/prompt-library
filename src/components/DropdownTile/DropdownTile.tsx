@@ -11,7 +11,7 @@ export default function DropdownTile({
       <li
         style={
           !option.dropdownOption.includes("Add")
-            ? { width: "80%" }
+            ? { width: "85%" }
             : { width: "100%" }
         }
         {...data}
@@ -24,7 +24,7 @@ export default function DropdownTile({
           value={option.dropdownOption}
           onClick={handleRemoveOption}
         >
-          x
+          X
         </button>
       )}
     </div>
