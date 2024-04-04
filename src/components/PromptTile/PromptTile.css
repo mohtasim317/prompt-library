@@ -4,6 +4,9 @@
   flex-direction: column;
   justify-content: space-between;
   min-height: 200px;
+  margin: 3px;
+  border: 1px solid black;
+  border-radius: 3px;
 
   &.is-selected {
     border: 1px solid #83adfc;
@@ -11,21 +14,18 @@
   }
 }
 
-.PromptTile:last-child {
-  border-bottom: 0px;
-}
-
 .PromptTitle {
   display: flex;
-  padding-top: 20px;
-  padding-left: 20px;
   max-height: 50px;
   width: 300px;
+  margin: 10px 5px;
+  font-weight: bold;
 }
 
 .TopRow {
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
 }
 
 .PromptFolder {
@@ -37,10 +37,8 @@
 
 .PromptText {
   display: flex;
-  justify-content: right;
-  padding-top: 20px;
-  padding-right: 20px;
   max-height: 133px;
   width: 500px;
   overflow: hidden;
+  margin: 5px;
 }

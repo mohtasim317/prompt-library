@@ -4,7 +4,7 @@ export interface MockDataType {
   id: number;
   title: string;
   text: string;
-  folder: string;
+  folder?: string;
 }
 
 export interface FolderAndDropdownSectionPropsType {
@@ -24,6 +24,8 @@ export interface DropdownContextInterface {
 export interface PromptContextInterface {
   setSelectedId: Dispatch<SetStateAction<number | null>>;
   selectedId: number | null;
+  promptList: MockDataType[];
+  setPromptList: Dispatch<SetStateAction<MockDataType[]>>;
 }
 
 export interface DropdownOptionType {

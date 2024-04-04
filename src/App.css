@@ -9,6 +9,7 @@ body {
   gap: 20px;
   margin: 20px 2%;
   justify-content: center;
+  height: 95vh;
 }
 
 .NavRow {
