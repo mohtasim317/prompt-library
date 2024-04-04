@@ -1,18 +1,28 @@
 import { DropdownTileType } from "../../types";
+import "./DropdownTile.scss";
 
 export default function DropdownTile({
   data,
   option,
-  removeOption,
+  handleRemoveOption,
 }: DropdownTileType) {
   return (
-    <div style={{ display: "flex", flexDirection: "row", width: "100%" }}>
-      <li {...data}>{option.dropdownOption} </li>
+    <div className="DropDownTile">
+      <li
+        style={
+          !option.dropdownOption.includes("Add")
+            ? { width: "80%" }
+            : { width: "100%" }
+        }
+        {...data}
+      >
+        {option.dropdownOption}
+      </li>
       {!option.dropdownOption.includes("Add") && (
         <button
+          className="RemoveButton"
           value={option.dropdownOption}
-          style={{ width: "20%" }}
-          onClick={removeOption}
+          onClick={handleRemoveOption}
         >
           x
         </button>

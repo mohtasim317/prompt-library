@@ -12,7 +12,7 @@ export default function Dropdown({
 }: DropdownProps) {
   const [value, setValue] = useState<DropdownOptionType | null>(null);
 
-  const removeOption = (event: MouseEvent<HTMLButtonElement>) => {
+  const handleRemoveOption = (event: MouseEvent<HTMLButtonElement>) => {
     const input = (event.target as HTMLInputElement).value;
     setCurrentDropdownOptions((prevState) => {
       const filtered = prevState.filter((option) => {
@@ -78,7 +78,7 @@ export default function Dropdown({
             <DropdownTile
               data={props}
               option={option}
-              removeOption={removeOption}
+              handleRemoveOption={handleRemoveOption}
             />
           </div>
         );
