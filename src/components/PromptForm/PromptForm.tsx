@@ -1,14 +1,37 @@
 import "./PromptForm.scss";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { PromptContext } from "../../Context/PromptContext";
 import { MockDataType, PromptContextInterface } from "../../types";
-import { promptData } from "../../constants/constants";
 
 function PropmtForm() {
-  const { selectedId } = useContext(PromptContext) as PromptContextInterface;
+  const { selectedId, setSelectedId, promptList, setPromptList } = useContext(
+    PromptContext
+  ) as PromptContextInterface;
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+
+  const handleTitleChange: React.FormEventHandler<HTMLInputElement> = (e) => {
+    setTitle(e.currentTarget.value);
+  };
+  const handleContentChange: React.FormEventHandler<HTMLTextAreaElement> = (
+    e
+  ) => {
+    setContent(e.currentTarget.value);
+  };
+  const savePrompt = () => {
+    const id = promptList.length ? promptList[promptList.length - 1].id + 1 : 1;
+    const newPromptData: MockDataType = {
+      id,
+      title,
+      text: content,
+    };
+    const newPromtList = [...promptList, newPromptData];
+    setPromptList(newPromtList);
+    setSelectedId(id);
+  };
   let formContent;
   if (selectedId) {
-    const formData: MockDataType = promptData.filter(
+    const formData: MockDataType = promptList.filter(
       (item) => item.id === selectedId
     )[0];
     formContent = (
@@ -34,14 +57,18 @@ function PropmtForm() {
           className="prompt-title"
           placeholder="Enter a title..."
           autoFocus
+          onChange={handleTitleChange}
         ></input>
         <textarea
           className="prompt-content"
           placeholder="Enter prompt text..."
+          onChange={handleContentChange}
         ></textarea>
         <div className="prompt-footer">
           <button>Copy</button>
-          <button>Save</button>
+          <button disabled={!title || !content} onClick={savePrompt}>
+            Save
+          </button>
         </div>
       </>
     );
