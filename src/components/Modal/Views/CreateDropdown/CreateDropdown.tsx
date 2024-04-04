@@ -5,6 +5,7 @@ import {
   DropdownOptionType,
 } from "../../../../types";
 import { DropdownContext } from "../../../../Context/DropdownContext";
+import "./CreateDropdown.css";
 
 export default function CreateDropdown() {
   const [currentDropdownOptions, setCurrentDropdownOptions] = useState<
@@ -36,9 +37,9 @@ export default function CreateDropdown() {
 
   return (
     <div className="CreateDropdownView">
-      <div>Dropdown Title:</div>
+      <div className="DropdownTitle">Dropdown Title:</div>
       <input value={title} onChange={onInputChange}></input>
-      <div>Add Dropdown options:</div>
+      <div className="AddDropdownOptions">Add Dropdown Options:</div>
       <Dropdown
         currentDropdownOptions={currentDropdownOptions}
         setCurrentDropdownOptions={setCurrentDropdownOptions}

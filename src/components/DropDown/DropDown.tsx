@@ -74,18 +74,16 @@ export default function Dropdown({
       }}
       renderOption={(props, option) => {
         return (
-          <div style={{ display: "flex", flexDirection: "row", width: "100%" }}>
-            <DropdownTile
-              data={props}
-              option={option}
-              handleRemoveOption={handleRemoveOption}
-            />
-          </div>
+          <DropdownTile
+            data={props}
+            option={option}
+            handleRemoveOption={handleRemoveOption}
+          />
         );
       }}
       freeSolo
       renderInput={(params) => (
-        <TextField {...params} label="Add Dropdown options" />
+        <TextField {...params} label="Add Dropdown Options:" />
       )}
     />
   );
