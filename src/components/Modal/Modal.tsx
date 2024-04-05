@@ -10,7 +10,12 @@ function Modal({ setShowModal, type }: ModalPropsType) {
   return (
     <div className="ModalBackground">
       <div className="ModalContent">
-        <button onClick={() => setShowModal(false)}>Close</button>
+        <button
+          className="CloseModalButton"
+          onClick={() => setShowModal(false)}
+        >
+          X
+        </button>
         <div className="ModalView">
           {ModalViews[type as keyof typeof ModalViews]}
         </div>

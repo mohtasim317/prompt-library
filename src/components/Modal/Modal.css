@@ -25,3 +25,14 @@
 .ModalView {
   width: 60%;
 }
+
+.CloseModalButton {
+  margin: 5px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: white;
+  border: none;
+  text-align: center;
+  font-size: 14px;
+}
