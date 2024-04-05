@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { MockDataType, PromptContextInterface } from "../types";
 
 export const PromptContext = createContext<PromptContextInterface | null>(null);
@@ -15,6 +15,11 @@ export function PromptContextProvider({
     );
     return promptDataList;
   });
+
+  useEffect(() => {
+    // Save to localStorage whenever the promptList changes
+    localStorage.setItem("promptList", JSON.stringify(promptList));
+  }, [promptList]);
 
   return (
     <PromptContext.Provider

@@ -27,7 +27,6 @@ function PropmtForm() {
     };
     const newPromtList = [...promptList, newPromptData];
     setPromptList(newPromtList);
-    localStorage.setItem("promptList", JSON.stringify(newPromtList));
     setSelectedId(id);
   };
   let formContent;
