@@ -1,0 +1,14 @@
+.DropDownTile {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.RemoveButton {
+  width: 15%;
+  background-color: white;
+  border: none;
+  text-align: center;
+  font-size: 14px;
+}

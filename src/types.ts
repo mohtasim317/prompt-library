@@ -41,3 +41,9 @@ export interface DropdownProps {
 export interface TitleAndDropDownType {
   [title: string]: DropdownOptionType[];
 }
+
+export interface DropdownTileType {
+  data: React.HTMLAttributes<HTMLLIElement>;
+  option: DropdownOptionType;
+  handleRemoveOption: (event: React.MouseEvent<HTMLButtonElement>) => void;
+}

@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { MouseEvent, useState } from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
 import { DropdownProps, DropdownOptionType } from "../../types";
+import DropdownTile from "../DropdownTile/DropdownTile";
 
 const filter = createFilterOptions<DropdownOptionType>();
 
@@ -10,6 +11,16 @@ export default function Dropdown({
   setCurrentDropdownOptions,
 }: DropdownProps) {
   const [value, setValue] = useState<DropdownOptionType | null>(null);
+
+  const handleRemoveOption = (event: MouseEvent<HTMLButtonElement>) => {
+    const input = (event.target as HTMLInputElement).value;
+    setCurrentDropdownOptions((prevState) => {
+      const filtered = prevState.filter((option) => {
+        return option.dropdownOption !== input;
+      });
+      return filtered;
+    });
+  };
 
   return (
     <Autocomplete
@@ -61,12 +72,18 @@ export default function Dropdown({
         }
         return option.dropdownOption;
       }}
-      renderOption={(props, option) => (
-        <li {...props}>{option.dropdownOption} </li>
-      )}
+      renderOption={(props, option) => {
+        return (
+          <DropdownTile
+            data={props}
+            option={option}
+            handleRemoveOption={handleRemoveOption}
+          />
+        );
+      }}
       freeSolo
       renderInput={(params) => (
-        <TextField {...params} label="Add Dropdown options" />
+        <TextField {...params} label="Add Dropdown Options:" />
       )}
     />
   );
