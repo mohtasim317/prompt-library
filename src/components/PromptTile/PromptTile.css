@@ -28,6 +28,14 @@
   flex-direction: column;
 }
 
+.PromptText {
+  display: flex;
+  max-height: 133px;
+  width: 500px;
+  overflow: hidden;
+  margin: 5px;
+}
+
 .PromptFolder {
   display: flex;
   justify-content: left;
@@ -35,10 +43,10 @@
   max-height: 20px;
 }
 
-.PromptText {
-  display: flex;
-  max-height: 133px;
-  width: 500px;
-  overflow: hidden;
-  margin: 5px;
+.RemoveTileButton {
+  width: 20%;
+}
+
+.BottomRow {
+  justify-content: space-between;
 }

@@ -4,7 +4,7 @@ import { PromptContext } from "../../Context/PromptContext";
 import { useContext } from "react";
 
 function PromptTile({ id, title, text, folder }: MockDataType) {
-  const { selectedId, setSelectedId } = useContext(
+  const { selectedId, setSelectedId, setPromptList } = useContext(
     PromptContext
   ) as PromptContextInterface;
   const selectTile = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -13,6 +13,19 @@ function PromptTile({ id, title, text, folder }: MockDataType) {
       setSelectedId(tileId);
     }
   };
+
+  const removeTile = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    const buttonValue = (e.target as HTMLInputElement).value;
+    setPromptList((prev) => {
+      setSelectedId(null);
+      const filteredData = prev.filter((element) => {
+        return element.id !== Number(buttonValue);
+      });
+      return filteredData;
+    });
+  };
+
   return (
     <div
       className={"PromptTile" + (selectedId == id ? " is-selected" : "")}
@@ -23,7 +36,12 @@ function PromptTile({ id, title, text, folder }: MockDataType) {
         <div className="PromptTitle">{title}</div>
         <div className="PromptText">{text}</div>
       </div>
-      <div className="PromptFolder">{folder}</div>
+      <div className="BottomRow">
+        <div className="PromptFolder">{folder}</div>
+        <button className="RemoveTileButton" value={id} onClick={removeTile}>
+          Delete
+        </button>
+      </div>
     </div>
   );
 }
