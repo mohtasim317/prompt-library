@@ -18,7 +18,7 @@ export default function DropdownTile({
       >
         {option.dropdownOption}
       </li>
-      {!option.dropdownOption.includes("Add") && (
+      {!option.dropdownOption.includes(option.inputValue as string) && (
         <button
           className="RemoveButton"
           value={option.dropdownOption}
