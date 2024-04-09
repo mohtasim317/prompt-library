@@ -6,9 +6,6 @@ export default function DropdownTile({
   option,
   handleRemoveOption,
 }: DropdownTileType) {
-  {
-    console.log(option.inputValue);
-  }
   return (
     <div className="DropDownTile">
       <li
