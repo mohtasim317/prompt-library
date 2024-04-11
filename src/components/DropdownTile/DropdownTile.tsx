@@ -1,3 +1,4 @@
+import { dropdownTypeMap } from "../../constants";
 import { DropdownTileType } from "../../types";
 import "./DropdownTile.scss";
 
@@ -5,6 +6,7 @@ export default function DropdownTile({
   data,
   option,
   handleRemoveOption,
+  dropdownType,
 }: DropdownTileType) {
   return (
     <div className="DropDownTile">
@@ -18,15 +20,16 @@ export default function DropdownTile({
       >
         {option.dropdownOption}
       </li>
-      {!option.dropdownOption.includes(option.inputValue as string) && (
-        <button
-          className="RemoveButton"
-          value={option.dropdownOption}
-          onClick={handleRemoveOption}
-        >
-          X
-        </button>
-      )}
+      {dropdownType === dropdownTypeMap.freeFormEntry &&
+        !option.dropdownOption.includes(option.inputValue as string) && (
+          <button
+            className="RemoveButton"
+            value={option.dropdownOption}
+            onClick={handleRemoveOption}
+          >
+            X
+          </button>
+        )}
     </div>
   );
 }

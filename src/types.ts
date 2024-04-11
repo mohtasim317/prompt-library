@@ -35,9 +35,12 @@ export interface DropdownOptionType {
 
 export interface DropdownProps {
   currentDropdownOptions: DropdownOptionType[];
-  setCurrentDropdownOptions: React.Dispatch<
+  setCurrentDropdownOptions?: React.Dispatch<
     React.SetStateAction<DropdownOptionType[]>
   >;
+  className?: string;
+  dropdownType: string;
+  setDropdownVisible?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export interface TitleAndDropDownType {
@@ -47,5 +50,6 @@ export interface TitleAndDropDownType {
 export interface DropdownTileType {
   data: React.HTMLAttributes<HTMLLIElement>;
   option: DropdownOptionType;
-  handleRemoveOption: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  handleRemoveOption?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  dropdownType: string;
 }

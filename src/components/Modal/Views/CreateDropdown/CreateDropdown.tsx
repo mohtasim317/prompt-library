@@ -6,6 +6,7 @@ import {
 } from "../../../../types";
 import { DropdownContext } from "../../../../Context/DropdownContext";
 import "./CreateDropdown.css";
+import { dropdownTypeMap } from "../../../../constants";
 
 export default function CreateDropdown() {
   const [currentDropdownOptions, setCurrentDropdownOptions] = useState<
@@ -43,6 +44,7 @@ export default function CreateDropdown() {
       <Dropdown
         currentDropdownOptions={currentDropdownOptions}
         setCurrentDropdownOptions={setCurrentDropdownOptions}
+        dropdownType={dropdownTypeMap.freeFormEntry}
       />
       <button onClick={handleSubmit}>Submit</button>
     </div>
