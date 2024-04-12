@@ -19,6 +19,10 @@ export interface ModalPropsType {
 export interface DropdownContextInterface {
   dropdownsList: TitleAndDropDownType;
   setDropdownsList: React.Dispatch<React.SetStateAction<TitleAndDropDownType>>;
+  promptDropdownSelection: string | undefined;
+  setPromptDropdownSelection: React.Dispatch<
+    React.SetStateAction<string | undefined>
+  >;
 }
 
 export interface PromptContextInterface {
@@ -41,6 +45,7 @@ export interface DropdownProps {
   className?: string;
   dropdownType: string;
   setDropdownVisible?: React.Dispatch<React.SetStateAction<boolean>>;
+  title: string;
 }
 
 export interface TitleAndDropDownType {

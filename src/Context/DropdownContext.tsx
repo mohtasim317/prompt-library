@@ -17,9 +17,18 @@ export function DropdownContextProvider({
       return initialValue;
     }
   );
-
+  const [promptDropdownSelection, setPromptDropdownSelection] = useState<
+    string | undefined
+  >(undefined);
   return (
-    <DropdownContext.Provider value={{ dropdownsList, setDropdownsList }}>
+    <DropdownContext.Provider
+      value={{
+        dropdownsList,
+        setDropdownsList,
+        promptDropdownSelection,
+        setPromptDropdownSelection,
+      }}
+    >
       {children}
     </DropdownContext.Provider>
   );

@@ -1,4 +1,4 @@
-export { default as Dropdown } from "./Dropdown/Dropdown";
+export { default as Dropdown } from "./DropDown/DropDown";
 export { default as DropdownTile } from "./DropdownTile/DropdownTile";
 export { default as FolderAndDropdownSection } from "./FolderAndDropdownSection/FolderAndDropdownSection";
 export { default as Modal } from "./Modal/Modal";
