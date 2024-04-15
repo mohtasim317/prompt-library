@@ -1,13 +1,13 @@
-import "./PromptTile.css";
+import { useContext } from "react";
 import { MockDataType, PromptContextInterface } from "../../types";
 import { PromptContext } from "../../Context/PromptContext";
-import { useContext } from "react";
+import "./PromptTile.scss";
 
 function PromptTile({ id, title, text, folder }: MockDataType) {
   const { selectedId, setSelectedId, setPromptList } = useContext(
     PromptContext
   ) as PromptContextInterface;
-  
+
   const selectTile = (e: React.MouseEvent<HTMLDivElement>) => {
     const tileId = parseInt(e?.currentTarget.id);
     if (selectedId != tileId) {

@@ -66,9 +66,9 @@ function PromptForm() {
     )[0];
     formContent = (
       <>
-        <div className="prompt-title">{formData.title}</div>
-        <div className="prompt-content">{formData.text}</div>
-        <div className="prompt-footer">
+        <div className="InsertTitle">{formData.title}</div>
+        <div className="PromptContent">{formData.text}</div>
+        <div className="PromptFooter">
           <button>Edit Template</button>
           <button
             onClick={async () => {
@@ -84,14 +84,14 @@ function PromptForm() {
     formContent = (
       <>
         <input
-          className="prompt-title"
+          className="InsertTitle"
           placeholder="Enter a title..."
           autoFocus
           onChange={handleTitleChange}
         ></input>
         <div className="TextareaContainer">
           <textarea
-            className="prompt-content"
+            className="PromptContent"
             placeholder="Enter prompt text..."
             onChange={handleContentChange}
           ></textarea>
@@ -111,7 +111,7 @@ function PromptForm() {
             setDropdownVisible={setDropdownVisible}
           />
         </div>
-        <div className="prompt-footer">
+        <div className="PromptFooter">
           <button>Copy</button>
           <button disabled={!title || !content} onClick={savePrompt}>
             Save
@@ -120,7 +120,7 @@ function PromptForm() {
       </>
     );
   }
-  return <div className="prompt-form">{formContent}</div>;
+  return <div className="PromptForm">{formContent}</div>;
 }
 
 export default PromptForm;

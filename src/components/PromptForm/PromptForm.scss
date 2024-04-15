@@ -1,8 +1,8 @@
-.prompt-form {
+.PromptForm {
   display: flex;
   flex-direction: column;
 
-  .prompt-title {
+  .InsertTitle {
     flex-basis: 5%;
     font-weight: bold;
     font-size: 1.3em;
@@ -12,7 +12,7 @@
     position: relative;
     height: 100%;
 
-    .prompt-content {
+    .PromptContent {
       flex: 1 0 90%;
       border: 1px solid lightgray;
       border-radius: 5px;
@@ -42,7 +42,7 @@
     }
   }
 
-  .prompt-footer {
+  .PromptFooter {
     flex-basis: 5%;
     display: flex;
     justify-content: flex-end;

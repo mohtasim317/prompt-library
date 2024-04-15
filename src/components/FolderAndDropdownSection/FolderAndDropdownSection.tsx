@@ -4,7 +4,7 @@ import {
   DropdownContextInterface,
   FolderAndDropdownSectionPropsType,
 } from "../../types";
-import "./FolderAndDropdownSection.css";
+import "./FolderAndDropdownSection.scss";
 
 function FolderAndDropdownSection({
   setShowModal,

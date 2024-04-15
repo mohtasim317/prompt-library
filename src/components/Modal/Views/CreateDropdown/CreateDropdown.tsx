@@ -6,7 +6,7 @@ import {
 } from "../../../../types";
 import { DropdownContext } from "../../../../Context/DropdownContext";
 import { dropdownTypeMap } from "../../../../constants";
-import "./CreateDropdown.css";
+import "./CreateDropdown.scss";
 
 export default function CreateDropdown() {
   const [currentDropdownOptions, setCurrentDropdownOptions] = useState<
