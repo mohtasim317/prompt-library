@@ -1,10 +1,12 @@
 import { useState } from "react";
-import PromptList from "./components/PromptList/PromptList";
-import FolderAndDropdownSection from "./components/FolderAndDropdownSection/FolderAndDropdownSection";
-import Modal from "./components/Modal/Modal";
-import PromptForm from "./components/PromptForm/PromptForm";
 import { PromptContextProvider } from "./Context/PromptContext";
 import { DropdownContextProvider } from "./Context/DropdownContext";
+import {
+  FolderAndDropdownSection,
+  Modal,
+  PromptForm,
+  PromptList,
+} from "./components/Components";
 import "./App.scss";
 
 function App() {

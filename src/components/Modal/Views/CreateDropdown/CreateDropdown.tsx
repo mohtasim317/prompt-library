@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import Dropdown from "../../../DropDown/DropDown";
+import { Dropdown } from "../../../Components";
 import {
   DropdownContextInterface,
   DropdownOptionType,

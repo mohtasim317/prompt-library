@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import PromptTile from "../PromptTile/PromptTile";
+import { PromptTile } from "../Components";
 import { PromptContext } from "../../Context/PromptContext";
 import { PromptContextInterface } from "../../types";
 import "./PromptList.scss";

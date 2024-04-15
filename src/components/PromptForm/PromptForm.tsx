@@ -1,4 +1,3 @@
-import "./PromptForm.scss";
 import { useContext, useEffect, useRef, useState } from "react";
 import { PromptContext } from "../../Context/PromptContext";
 import {
@@ -7,9 +6,10 @@ import {
   MockDataType,
   PromptContextInterface,
 } from "../../types";
-import Dropdown from "../DropDown/DropDown";
+import { Dropdown } from "../Components";
 import { DropdownContext } from "../../Context/DropdownContext";
 import { dropdownTypeMap } from "../../constants";
+import "./PromptForm.scss";
 
 function PromptForm() {
   const { selectedId, setSelectedId, promptList, setPromptList } = useContext(
