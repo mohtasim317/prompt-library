@@ -17,6 +17,7 @@ function PromptForm() {
   ) as PromptContextInterface;
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [isDropdownVisible, setDropdownVisible] = useState(false);
   const { dropdownsList } = useContext(
     DropdownContext
   ) as DropdownContextInterface;
@@ -26,16 +27,17 @@ function PromptForm() {
       return { dropdownOption: property };
     }
   );
-  const [isDropdownVisible, setDropdownVisible] = useState(false);
 
   const handleTitleChange: React.FormEventHandler<HTMLInputElement> = (e) => {
     setTitle(e.currentTarget.value);
   };
+
   const handleContentChange: React.FormEventHandler<HTMLTextAreaElement> = (
     e
   ) => {
     setContent(e.currentTarget.value);
   };
+
   const savePrompt = () => {
     const id = promptList.length ? promptList[promptList.length - 1].id + 1 : 1;
     const newPromptData: MockDataType = {
@@ -47,6 +49,7 @@ function PromptForm() {
     setPromptList(newPromptList);
     setSelectedId(id);
   };
+
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {

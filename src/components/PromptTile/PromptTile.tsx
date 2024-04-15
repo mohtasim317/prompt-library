@@ -7,6 +7,7 @@ function PromptTile({ id, title, text, folder }: MockDataType) {
   const { selectedId, setSelectedId, setPromptList } = useContext(
     PromptContext
   ) as PromptContextInterface;
+  
   const selectTile = (e: React.MouseEvent<HTMLDivElement>) => {
     const tileId = parseInt(e?.currentTarget.id);
     if (selectedId != tileId) {
