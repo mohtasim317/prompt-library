@@ -11,7 +11,7 @@ import Dropdown from "../DropDown/DropDown";
 import { DropdownContext } from "../../Context/DropdownContext";
 import { dropdownTypeMap } from "../../constants";
 
-function PropmtForm() {
+function PromptForm() {
   const { selectedId, setSelectedId, promptList, setPromptList } = useContext(
     PromptContext
   ) as PromptContextInterface;
@@ -43,8 +43,8 @@ function PropmtForm() {
       title,
       text: content,
     };
-    const newPromtList = [...promptList, newPromptData];
-    setPromptList(newPromtList);
+    const newPromptList = [...promptList, newPromptData];
+    setPromptList(newPromptList);
     setSelectedId(id);
   };
   const inputRef = useRef<HTMLInputElement>(null);
@@ -120,4 +120,4 @@ function PropmtForm() {
   return <div className="prompt-form">{formContent}</div>;
 }
 
-export default PropmtForm;
+export default PromptForm;
