@@ -1,4 +1,3 @@
-import "./PromptForm.scss";
 import { useContext, useEffect, useRef, useState } from "react";
 import { PromptContext } from "../../Context/PromptContext";
 import {
@@ -7,16 +6,18 @@ import {
   MockDataType,
   PromptContextInterface,
 } from "../../types";
-import Dropdown from "../DropDown/DropDown";
+import { Dropdown } from "../Components";
 import { DropdownContext } from "../../Context/DropdownContext";
 import { dropdownTypeMap } from "../../constants";
+import "./PromptForm.scss";
 
-function PropmtForm() {
+function PromptForm() {
   const { selectedId, setSelectedId, promptList, setPromptList } = useContext(
     PromptContext
   ) as PromptContextInterface;
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [isDropdownVisible, setDropdownVisible] = useState(false);
   const { dropdownsList } = useContext(
     DropdownContext
   ) as DropdownContextInterface;
@@ -26,16 +27,17 @@ function PropmtForm() {
       return { dropdownOption: property };
     }
   );
-  const [isDropdownVisible, setDropdownVisible] = useState(false);
 
   const handleTitleChange: React.FormEventHandler<HTMLInputElement> = (e) => {
     setTitle(e.currentTarget.value);
   };
+
   const handleContentChange: React.FormEventHandler<HTMLTextAreaElement> = (
     e
   ) => {
     setContent(e.currentTarget.value);
   };
+
   const savePrompt = () => {
     const id = promptList.length ? promptList[promptList.length - 1].id + 1 : 1;
     const newPromptData: MockDataType = {
@@ -43,10 +45,11 @@ function PropmtForm() {
       title,
       text: content,
     };
-    const newPromtList = [...promptList, newPromptData];
-    setPromptList(newPromtList);
+    const newPromptList = [...promptList, newPromptData];
+    setPromptList(newPromptList);
     setSelectedId(id);
   };
+
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -63,9 +66,9 @@ function PropmtForm() {
     )[0];
     formContent = (
       <>
-        <div className="prompt-title">{formData.title}</div>
-        <div className="prompt-content">{formData.text}</div>
-        <div className="prompt-footer">
+        <div className="InsertTitle">{formData.title}</div>
+        <div className="PromptContent">{formData.text}</div>
+        <div className="PromptFooter">
           <button>Edit Template</button>
           <button
             onClick={async () => {
@@ -81,14 +84,14 @@ function PropmtForm() {
     formContent = (
       <>
         <input
-          className="prompt-title"
+          className="InsertTitle"
           placeholder="Enter a title..."
           autoFocus
           onChange={handleTitleChange}
         ></input>
         <div className="TextareaContainer">
           <textarea
-            className="prompt-content"
+            className="PromptContent"
             placeholder="Enter prompt text..."
             onChange={handleContentChange}
           ></textarea>
@@ -108,7 +111,7 @@ function PropmtForm() {
             setDropdownVisible={setDropdownVisible}
           />
         </div>
-        <div className="prompt-footer">
+        <div className="PromptFooter">
           <button>Copy</button>
           <button disabled={!title || !content} onClick={savePrompt}>
             Save
@@ -117,7 +120,7 @@ function PropmtForm() {
       </>
     );
   }
-  return <div className="prompt-form">{formContent}</div>;
+  return <div className="PromptForm">{formContent}</div>;
 }
 
-export default PropmtForm;
+export default PromptForm;

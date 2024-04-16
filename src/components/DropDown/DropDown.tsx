@@ -2,7 +2,7 @@ import { MouseEvent, forwardRef, useState } from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
 import { DropdownProps, DropdownOptionType } from "../../types";
-import DropdownTile from "../DropdownTile/DropdownTile";
+import { DropdownTile } from "../Components";
 import { dropdownTypeMap } from "../../constants";
 
 const filter = createFilterOptions<DropdownOptionType>();

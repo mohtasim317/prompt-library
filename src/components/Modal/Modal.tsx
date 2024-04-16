@@ -1,6 +1,6 @@
 import { ModalPropsType } from "../../types";
 import CreateDropdown from "./Views/CreateDropdown/CreateDropdown";
-import "./Modal.css";
+import "./Modal.scss";
 
 const ModalViews = {
   createDropdown: <CreateDropdown />,

@@ -1,8 +1,8 @@
-import "./PromptList.css";
-import PromptTile from "../PromptTile/PromptTile";
 import { useContext } from "react";
+import { PromptTile } from "../Components";
 import { PromptContext } from "../../Context/PromptContext";
 import { PromptContextInterface } from "../../types";
+import "./PromptList.scss";
 
 function PromptList() {
   const { selectedId, setSelectedId, promptList } = useContext(

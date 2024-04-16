@@ -1,11 +1,13 @@
-import "./App.css";
-import PromptList from "./components/PromptList/PromptList";
-import FolderAndDropdownSection from "./components/FolderAndDropdownSection/FolderAndDropdownSection";
 import { useState } from "react";
-import Modal from "./components/Modal/Modal";
-import PromptForm from "./components/PromptForm/PromptForm";
 import { PromptContextProvider } from "./Context/PromptContext";
 import { DropdownContextProvider } from "./Context/DropdownContext";
+import {
+  FolderAndDropdownSection,
+  Modal,
+  PromptForm,
+  PromptList,
+} from "./components/Components";
+import "./App.scss";
 
 function App() {
   const [showModal, setShowModal] = useState(false);

@@ -1,12 +1,12 @@
 import { useContext, useState } from "react";
-import Dropdown from "../../../DropDown/DropDown";
+import { Dropdown } from "../../../Components";
 import {
   DropdownContextInterface,
   DropdownOptionType,
 } from "../../../../types";
 import { DropdownContext } from "../../../../Context/DropdownContext";
-import "./CreateDropdown.css";
 import { dropdownTypeMap } from "../../../../constants";
+import "./CreateDropdown.scss";
 
 export default function CreateDropdown() {
   const [currentDropdownOptions, setCurrentDropdownOptions] = useState<
@@ -19,7 +19,7 @@ export default function CreateDropdown() {
     DropdownContext
   ) as DropdownContextInterface;
 
-  function handleSubmit() {
+  const handleSubmit = () => {
     if (!dropdownsList[title] && title !== "") {
       setDropdownsList((prev) => {
         const allDropdowns = { ...prev, [title]: currentDropdownOptions };
@@ -30,11 +30,11 @@ export default function CreateDropdown() {
       setCurrentDropdownOptions([]);
       setTitle("");
     }
-  }
+  };
 
-  function onInputChange(e: React.ChangeEvent<HTMLInputElement>) {
+  const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
-  }
+  };
 
   return (
     <div className="CreateDropdownView">
