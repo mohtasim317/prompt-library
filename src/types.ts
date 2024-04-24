@@ -33,6 +33,15 @@ export interface PromptContextInterface {
   setPromptList: Dispatch<SetStateAction<MockDataType[]>>;
 }
 
+export interface ModalContextInterface {
+  showModal: boolean;
+  setShowModal: Dispatch<SetStateAction<boolean>>;
+  modalType: ModalTypes;
+  setModalType: React.Dispatch<React.SetStateAction<ModalTypes>>;
+  dropdownEditName: string;
+  setDropdownEditName: React.Dispatch<React.SetStateAction<string>>;
+}
+
 export interface DropdownOptionType {
   inputValue?: string;
   dropdownOption: string;

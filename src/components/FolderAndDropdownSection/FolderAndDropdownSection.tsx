@@ -1,15 +1,10 @@
 import { MouseEvent, useContext, useState } from "react";
 import { DropdownContext } from "../../Context/DropdownContext";
-import {
-  DropdownContextInterface,
-  FolderAndDropdownSectionPropsType,
-} from "../../types";
+import { DropdownContextInterface, ModalContextInterface } from "../../types";
 import "./FolderAndDropdownSection.scss";
+import { ModalContext } from "../../Context/ModalContext";
 
-function FolderAndDropdownSection({
-  setShowModal,
-  setModalType,
-}: FolderAndDropdownSectionPropsType) {
+function FolderAndDropdownSection() {
   const [showInputBox, setShowInputBox] = useState(false);
   const [folderList, setFolderList] = useState<string[]>([]);
   const [inputFolderName, setInputFolderName] = useState<string>("");
@@ -17,6 +12,10 @@ function FolderAndDropdownSection({
   const { dropdownsList, setDropdownsList } = useContext(
     DropdownContext
   ) as DropdownContextInterface;
+
+  const { setShowModal, setModalType, setDropdownEditName } = useContext(
+    ModalContext
+  ) as ModalContextInterface;
 
   const handleKeyDown = (event: { key: string }): void => {
     if (event.key === "Enter") {
@@ -79,6 +78,7 @@ function FolderAndDropdownSection({
                       onClick={() => {
                         setShowModal((prevState) => !prevState);
                         setModalType("editDropdown");
+                        setDropdownEditName(property);
                       }}
                     >
                       Edit
