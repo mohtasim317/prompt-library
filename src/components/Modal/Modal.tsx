@@ -4,6 +4,8 @@ import "./Modal.scss";
 
 const ModalViews = {
   createDropdown: <CreateDropdown />,
+  editDropdown: <EditDropdown />,
+
 };
 
 function Modal({ setShowModal, type }: ModalPropsType) {

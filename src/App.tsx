@@ -8,20 +8,25 @@ import {
   PromptList,
 } from "./components/Components";
 import "./App.scss";
+import { ModalTypes } from "./types";
 
 function App() {
   const [showModal, setShowModal] = useState(false);
+  const [modalType, setModalType] = useState<ModalTypes>("");
   return (
     <DropdownContextProvider>
       <div className="App">
         <div className="NavRow">Nav Row Placeholder</div>
-        <FolderAndDropdownSection setShowModal={setShowModal} />
+        <FolderAndDropdownSection
+          setShowModal={setShowModal}
+          setModalType={setModalType}
+        />
         <PromptContextProvider>
           <>
             <PromptList />
             <PromptForm />
             {showModal && (
-              <Modal type="createDropdown" setShowModal={setShowModal} />
+              <Modal type={modalType} setShowModal={setShowModal} />
             )}
           </>
         </PromptContextProvider>

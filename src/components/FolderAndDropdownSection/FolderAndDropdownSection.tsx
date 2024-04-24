@@ -8,6 +8,7 @@ import "./FolderAndDropdownSection.scss";
 
 function FolderAndDropdownSection({
   setShowModal,
+  setModalType,
 }: FolderAndDropdownSectionPropsType) {
   const [showInputBox, setShowInputBox] = useState(false);
   const [folderList, setFolderList] = useState<string[]>([]);
@@ -73,6 +74,15 @@ function FolderAndDropdownSection({
                 <div className="DropDownView" key={`${property} + ${idx}`}>
                   <div className="Top">
                     <div>{property}:</div>
+                    <button
+                      value={property}
+                      onClick={() => {
+                        setShowModal((prevState) => !prevState);
+                        setModalType("editDropdown");
+                      }}
+                    >
+                      Edit
+                    </button>
                     <button value={property} onClick={removeDropdown}>
                       x
                     </button>
@@ -83,7 +93,12 @@ function FolderAndDropdownSection({
           </div>
         )}
       </div>
-      <button onClick={() => setShowModal((prevState) => !prevState)}>
+      <button
+        onClick={() => {
+          setShowModal((prevState) => !prevState);
+          setModalType("createDropdown");
+        }}
+      >
         Create New Dropdown
       </button>
     </div>

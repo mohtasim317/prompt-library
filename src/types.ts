@@ -9,6 +9,7 @@ export interface MockDataType {
 
 export interface FolderAndDropdownSectionPropsType {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+  setModalType: React.Dispatch<React.SetStateAction<ModalTypes>>;
 }
 
 export interface ModalPropsType {
@@ -58,3 +59,5 @@ export interface DropdownTileType {
   handleRemoveOption?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   dropdownType: string;
 }
+
+export type ModalTypes = "" | "createDropdown" | "editDropdown";
