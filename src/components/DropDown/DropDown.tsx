@@ -1,9 +1,14 @@
-import { MouseEvent, forwardRef, useState } from "react";
+import { MouseEvent, forwardRef, useContext, useState } from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
-import { DropdownProps, DropdownOptionType } from "../../types";
-import { DropdownTile } from "../Components";
-import { dropdownTypeMap } from "../../constants";
+import {
+  DropdownProps,
+  DropdownOptionType,
+  DropdownContextInterface,
+} from "../../types";
+import DropdownTile from "../DropdownTile/DropdownTile";
+import { dropdownTypeMap, DropdownTitleMap } from "../../constants";
+import { DropdownContext } from "../../Context/DropdownContext";
 
 const filter = createFilterOptions<DropdownOptionType>();
 
@@ -14,10 +19,14 @@ const Dropdown = forwardRef(function Dropdown(
     className,
     dropdownType,
     setDropdownVisible,
+    title,
   }: DropdownProps,
   inputRef
 ) {
-  const [value, setValue] = useState<DropdownOptionType | null>(null);
+  const [selectedValue, seSelectedtValue] = useState<DropdownOptionType | null>(
+    null
+  );
+  const [inputValue, setInputValue] = useState<string>("");
 
   const handleRemoveOption = (event: MouseEvent<HTMLButtonElement>) => {
     const input = (event.target as HTMLInputElement).value;
@@ -33,30 +42,39 @@ const Dropdown = forwardRef(function Dropdown(
   const handleOnBlur = () => {
     if (dropdownType === dropdownTypeMap.singleSelect && setDropdownVisible) {
       setDropdownVisible(false);
+      seSelectedtValue(null);
+      setInputValue(""); // clears the actual value in the input that gets set after a selection was made
     }
   };
 
+  const { setPromptDropdownSelection } = useContext(
+    DropdownContext
+  ) as DropdownContextInterface;
   return (
     <Autocomplete
-      value={value}
+      value={selectedValue}
+      inputValue={inputValue}
       className={className}
-      onChange={(event, newValue) => {
-        if (typeof newValue === "string") {
-          setValue({
-            dropdownOption: newValue,
+      onChange={(event, newSelectedValue) => {
+        if (typeof newSelectedValue === "string") {
+          seSelectedtValue({
+            dropdownOption: newSelectedValue,
           });
-        } else if (newValue && newValue.inputValue) {
-          setValue({
-            dropdownOption: newValue.inputValue,
+        } else if (newSelectedValue && newSelectedValue.inputValue) {
+          seSelectedtValue({
+            dropdownOption: newSelectedValue.inputValue,
           });
           if (setCurrentDropdownOptions) {
             setCurrentDropdownOptions((prevState) => [
               ...prevState,
-              { dropdownOption: newValue.inputValue as string },
+              { dropdownOption: newSelectedValue.inputValue as string },
             ]);
           }
         } else {
-          setValue(newValue);
+          seSelectedtValue(newSelectedValue);
+          if (DropdownTitleMap.promptSelector === title) {
+            setPromptDropdownSelection(newSelectedValue?.dropdownOption);
+          }
         }
       }}
       filterOptions={(options, params) => {
@@ -114,6 +132,12 @@ const Dropdown = forwardRef(function Dropdown(
           label="Add Dropdown Options:"
           autoFocus
           inputRef={inputRef} // need to access the input ref from the prompt form to focus the input when visible
+          inputProps={{
+            ...params.inputProps,
+            onChange: (event) => {
+              setInputValue(event.currentTarget.value);
+            },
+          }}
         />
       )}
       blurOnSelect={

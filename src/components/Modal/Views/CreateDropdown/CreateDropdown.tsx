@@ -42,6 +42,7 @@ export default function CreateDropdown() {
       <input value={title} onChange={onInputChange}></input>
       <div className="AddDropdownOptions">Add Dropdown Options:</div>
       <Dropdown
+        title={title}
         currentDropdownOptions={currentDropdownOptions}
         setCurrentDropdownOptions={setCurrentDropdownOptions}
         dropdownType={dropdownTypeMap.freeFormEntry}

@@ -59,6 +59,19 @@ function PromptForm() {
     }
   }, [isDropdownVisible]);
 
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  // whenever the dropdown value changes update texarea content by appending that value
+  const { promptDropdownSelection } = useContext(
+    DropdownContext
+  ) as DropdownContextInterface;
+  useEffect(() => {
+    const dropdownString = promptDropdownSelection
+      ? ` [${promptDropdownSelection}]`
+      : "";
+    setContent((prev) => prev + dropdownString);
+    textareaRef.current?.focus();
+  }, [promptDropdownSelection]);
+
   let formContent;
   if (selectedId) {
     const formData: MockDataType = promptList.filter(
@@ -92,8 +105,10 @@ function PromptForm() {
         <div className="TextareaContainer">
           <textarea
             className="PromptContent"
+            ref={textareaRef}
             placeholder="Enter prompt text..."
             onChange={handleContentChange}
+            value={content}
           ></textarea>
           <button
             className={
@@ -109,6 +124,7 @@ function PromptForm() {
             className={isDropdownVisible ? "" : "isHidden"}
             dropdownType={dropdownTypeMap.singleSelect}
             setDropdownVisible={setDropdownVisible}
+            title="promptDropdownSelector"
           />
         </div>
         <div className="PromptFooter">
