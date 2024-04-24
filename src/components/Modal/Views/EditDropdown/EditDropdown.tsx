@@ -11,19 +11,24 @@ import "./EditDropdown.scss";
 import { ModalContext } from "../../../../Context/ModalContext";
 
 export default function EditDropdown() {
-  const [currentDropdownOptions, setCurrentDropdownOptions] = useState<
-    DropdownOptionType[]
-  >([]);
-
-  const [title, setTitle] = useState<string>("");
-
   const { dropdownsList, setDropdownsList } = useContext(
     DropdownContext
   ) as DropdownContextInterface;
 
-  const { setShowModal, setModalType, setDropdownEditName } = useContext(
+  const { setShowModal, setModalType, dropdownEditName } = useContext(
     ModalContext
   ) as ModalContextInterface;
+
+  const [currentDropdownOptions, setCurrentDropdownOptions] = useState<
+    DropdownOptionType[]
+  >(() => {
+    const dropdownArray = dropdownsList[dropdownEditName];
+    const copy = [...dropdownArray];
+    return copy;
+  });
+
+  const [title, setTitle] = useState<string>("");
+
 
   const handleSubmit = () => {
     if (!dropdownsList[title] && title !== "") {
