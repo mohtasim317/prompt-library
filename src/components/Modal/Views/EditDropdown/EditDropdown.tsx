@@ -15,32 +15,44 @@ export default function EditDropdown() {
     DropdownContext
   ) as DropdownContextInterface;
 
-  const { setShowModal, setModalType, dropdownEditName } = useContext(
+  const { dropdownEditName, setShowModal } = useContext(
     ModalContext
   ) as ModalContextInterface;
 
   const [currentDropdownOptions, setCurrentDropdownOptions] = useState<
     DropdownOptionType[]
   >(() => {
-    const dropdownArray = dropdownsList[dropdownEditName];
-    const copy = [...dropdownArray];
-    return copy;
+    const dropdownOptions = [...dropdownsList[dropdownEditName]];
+    return dropdownOptions;
   });
 
-  const [title, setTitle] = useState<string>("");
-
-
+  const [title, setTitle] = useState<string>(dropdownEditName);
+  //dropdownEditName, title
   const handleSubmit = () => {
-    if (!dropdownsList[title] && title !== "") {
-      setDropdownsList((prev) => {
-        const allDropdowns = { ...prev, [title]: currentDropdownOptions };
-        localStorage.setItem("allDropdowns", JSON.stringify(allDropdowns));
-        return allDropdowns;
-      });
+    if (title !== "") {
+      if (dropdownEditName !== title) {
+        if (!dropdownsList[title]) {
+          setDropdownsList((prev) => {
+            delete Object.assign(prev, { [title]: prev[dropdownEditName] })[
+              dropdownEditName
+            ];
 
-      setCurrentDropdownOptions([]);
-      setTitle("");
+            const allDropdowns = { ...prev, [title]: currentDropdownOptions };
+            localStorage.setItem("allDropdowns", JSON.stringify(allDropdowns));
+            return allDropdowns;
+          });
+        }
+      } else {
+        setDropdownsList((prev) => {
+          const allDropdowns = { ...prev, [title]: currentDropdownOptions };
+          localStorage.setItem("allDropdowns", JSON.stringify(allDropdowns));
+          return allDropdowns;
+        });
+      }
     }
+    setCurrentDropdownOptions([]);
+    setTitle("");
+    setShowModal(false);
   };
 
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {

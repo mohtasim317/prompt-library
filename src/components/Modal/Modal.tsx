@@ -1,4 +1,4 @@
-import { ModalContextInterface, ModalPropsType } from "../../types";
+import { ModalContextInterface } from "../../types";
 import CreateDropdown from "./Views/CreateDropdown/CreateDropdown";
 import EditDropdown from "./Views/EditDropdown/EditDropdown";
 import "./Modal.scss";
