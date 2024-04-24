@@ -4,7 +4,7 @@ import {
   DropdownContextInterface,
   DropdownOptionType,
 } from "../../../../types";
-import { DropdownContext } from "../../../../Context/DropdownContext";
+import { DropdownContext } from "../../../../Context/Contexts";
 import { dropdownTypeMap } from "../../../../constants";
 import "./CreateDropdown.scss";
 

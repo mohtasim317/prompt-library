@@ -5,10 +5,9 @@ import {
   DropdownOptionType,
   ModalContextInterface,
 } from "../../../../types";
-import { DropdownContext } from "../../../../Context/DropdownContext";
+import { DropdownContext, ModalContext } from "../../../../Context/Contexts";
 import { dropdownTypeMap } from "../../../../constants";
 import "./EditDropdown.scss";
-import { ModalContext } from "../../../../Context/ModalContext";
 
 export default function EditDropdown() {
   const { dropdownsList, setDropdownsList } = useContext(

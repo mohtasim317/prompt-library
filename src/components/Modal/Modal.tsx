@@ -1,9 +1,9 @@
+import { useContext } from "react";
 import { ModalContextInterface } from "../../types";
+import { ModalContext } from "../../Context/ModalContext";
 import CreateDropdown from "./Views/CreateDropdown/CreateDropdown";
 import EditDropdown from "./Views/EditDropdown/EditDropdown";
 import "./Modal.scss";
-import { useContext } from "react";
-import { ModalContext } from "../../Context/ModalContext";
 
 const ModalViews = {
   createDropdown: <CreateDropdown />,

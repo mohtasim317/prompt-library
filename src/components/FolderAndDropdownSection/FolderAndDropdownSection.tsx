@@ -1,8 +1,7 @@
 import { MouseEvent, useContext, useState } from "react";
-import { DropdownContext } from "../../Context/DropdownContext";
+import { DropdownContext, ModalContext } from "../../Context/Contexts";
 import { DropdownContextInterface, ModalContextInterface } from "../../types";
 import "./FolderAndDropdownSection.scss";
-import { ModalContext } from "../../Context/ModalContext";
 
 function FolderAndDropdownSection() {
   const [showInputBox, setShowInputBox] = useState(false);

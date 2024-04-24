@@ -1,6 +1,8 @@
-import { PromptContextProvider } from "./Context/PromptContext";
-import { DropdownContextProvider } from "./Context/DropdownContext";
-import { ModalContextProvider } from "./Context/ModalContext";
+import {
+  PromptContextProvider,
+  DropdownContextProvider,
+  ModalContextProvider,
+} from "./Context/Contexts";
 import {
   FolderAndDropdownSection,
   Modal,

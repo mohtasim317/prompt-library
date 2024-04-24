@@ -8,7 +8,7 @@ import {
 } from "../../types";
 import DropdownTile from "../DropdownTile/DropdownTile";
 import { dropdownTypeMap, DropdownTitleMap } from "../../constants";
-import { DropdownContext } from "../../Context/DropdownContext";
+import { DropdownContext } from "../../Context/Contexts";
 
 const filter = createFilterOptions<DropdownOptionType>();
 
