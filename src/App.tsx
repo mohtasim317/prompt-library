@@ -1,6 +1,8 @@
-import { useState } from "react";
-import { PromptContextProvider } from "./Context/PromptContext";
-import { DropdownContextProvider } from "./Context/DropdownContext";
+import {
+  PromptContextProvider,
+  DropdownContextProvider,
+  ModalContextProvider,
+} from "./Context/Contexts";
 import {
   FolderAndDropdownSection,
   Modal,
@@ -10,22 +12,21 @@ import {
 import "./App.scss";
 
 function App() {
-  const [showModal, setShowModal] = useState(false);
   return (
     <DropdownContextProvider>
-      <div className="App">
-        <div className="NavRow">Nav Row Placeholder</div>
-        <FolderAndDropdownSection setShowModal={setShowModal} />
-        <PromptContextProvider>
-          <>
-            <PromptList />
-            <PromptForm />
-            {showModal && (
-              <Modal type="createDropdown" setShowModal={setShowModal} />
-            )}
-          </>
-        </PromptContextProvider>
-      </div>
+      <ModalContextProvider>
+        <div className="App">
+          <div className="NavRow">Nav Row Placeholder</div>
+          <FolderAndDropdownSection />
+          <PromptContextProvider>
+            <>
+              <PromptList />
+              <PromptForm />
+              <Modal />
+            </>
+          </PromptContextProvider>
+        </div>
+      </ModalContextProvider>
     </DropdownContextProvider>
   );
 }

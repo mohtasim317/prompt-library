@@ -1,5 +1,4 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import { PromptContext } from "../../Context/PromptContext";
 import {
   DropdownContextInterface,
   DropdownOptionType,
@@ -7,7 +6,7 @@ import {
   PromptContextInterface,
 } from "../../types";
 import { Dropdown } from "../Components";
-import { DropdownContext } from "../../Context/DropdownContext";
+import { DropdownContext, PromptContext } from "../../Context/Contexts";
 import { dropdownTypeMap } from "../../constants";
 import "./PromptForm.scss";
 

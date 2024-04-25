@@ -1,14 +1,9 @@
 import { MouseEvent, useContext, useState } from "react";
-import { DropdownContext } from "../../Context/DropdownContext";
-import {
-  DropdownContextInterface,
-  FolderAndDropdownSectionPropsType,
-} from "../../types";
+import { DropdownContext, ModalContext } from "../../Context/Contexts";
+import { DropdownContextInterface, ModalContextInterface } from "../../types";
 import "./FolderAndDropdownSection.scss";
 
-function FolderAndDropdownSection({
-  setShowModal,
-}: FolderAndDropdownSectionPropsType) {
+function FolderAndDropdownSection() {
   const [showInputBox, setShowInputBox] = useState(false);
   const [folderList, setFolderList] = useState<string[]>([]);
   const [inputFolderName, setInputFolderName] = useState<string>("");
@@ -16,6 +11,10 @@ function FolderAndDropdownSection({
   const { dropdownsList, setDropdownsList } = useContext(
     DropdownContext
   ) as DropdownContextInterface;
+
+  const { setShowModal, setModalType, setDropdownEditName } = useContext(
+    ModalContext
+  ) as ModalContextInterface;
 
   const handleKeyDown = (event: { key: string }): void => {
     if (event.key === "Enter") {
@@ -73,6 +72,16 @@ function FolderAndDropdownSection({
                 <div className="DropDownView" key={`${property} + ${idx}`}>
                   <div className="Top">
                     <div>{property}:</div>
+                    <button
+                      value={property}
+                      onClick={() => {
+                        setShowModal((prevState) => !prevState);
+                        setModalType("editDropdown");
+                        setDropdownEditName(property);
+                      }}
+                    >
+                      Edit
+                    </button>
                     <button value={property} onClick={removeDropdown}>
                       x
                     </button>
@@ -83,7 +92,12 @@ function FolderAndDropdownSection({
           </div>
         )}
       </div>
-      <button onClick={() => setShowModal((prevState) => !prevState)}>
+      <button
+        onClick={() => {
+          setShowModal((prevState) => !prevState);
+          setModalType("createDropdown");
+        }}
+      >
         Create New Dropdown
       </button>
     </div>
