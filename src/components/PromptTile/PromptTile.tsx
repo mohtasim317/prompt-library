@@ -17,14 +17,14 @@ function PromptTile({ id, title, text, folder }: MockDataType) {
 
   const removeTile = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
-    const buttonValue = (e.target as HTMLInputElement).value;
-    setPromptList((prev) => {
+    setPromptList((prevPromptList) =>
+      prevPromptList.filter((prompt) => prompt.id !== id)
+    );
+
+    // Deselect if it was the selected tile
+    if (selectedId === id) {
       setSelectedId(null);
-      const filteredData = prev.filter((element) => {
-        return element.id !== Number(buttonValue);
-      });
-      return filteredData;
-    });
+    }
   };
 
   return (
