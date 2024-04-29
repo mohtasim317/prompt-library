@@ -9,6 +9,7 @@ import { Dropdown } from "../Components";
 import { DropdownContext, PromptContext } from "../../Context/Contexts";
 import { dropdownTypeMap } from "../../constants";
 import "./PromptForm.scss";
+import PromptContent from "../PromptContent/PromptContent";
 
 function PromptForm() {
   const { selectedId, setSelectedId, promptList, setPromptList } = useContext(
@@ -47,6 +48,7 @@ function PromptForm() {
     const newPromptList = [...promptList, newPromptData];
     setPromptList(newPromptList);
     setSelectedId(id);
+    setContent(""); // why is the title doesnt need to be cleared?
   };
 
   const inputRef = useRef<HTMLInputElement>(null);
@@ -79,7 +81,7 @@ function PromptForm() {
     formContent = (
       <>
         <div className="InsertTitle">{formData.title}</div>
-        <div className="PromptContent">{formData.text}</div>
+        <PromptContent content={formData.text} dropdownsList={dropdownsList} />
         <div className="PromptFooter">
           <button>Edit Template</button>
           <button

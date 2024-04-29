@@ -8,6 +8,19 @@
     font-size: 1.3em;
   }
 
+  .PromptContent.non-editable {
+    .MuiAutocomplete-root {
+      display: inline-block;
+      margin-right: 5px;
+
+      label.MuiFormLabel-root {
+        top: -15px;
+      }
+      .MuiInputBase-root.MuiOutlinedInput-root {
+        padding: 5px;
+      }
+    }
+  }
   .TextareaContainer {
     position: relative;
     height: 100%;
@@ -20,6 +33,13 @@
       width: 100%;
       height: 100%;
       box-sizing: border-box;
+
+      &.non-editable {
+        background-color: red;
+        .MuiAutocomplete-root {
+          display: inline-block;
+        }
+      }
     }
 
     .InsertDropdownButton {

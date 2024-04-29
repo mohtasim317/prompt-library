@@ -56,6 +56,8 @@ export interface DropdownProps {
   dropdownType: string;
   setDropdownVisible?: React.Dispatch<React.SetStateAction<boolean>>;
   title: string;
+  disableOpenOnFocus?: boolean;
+  isCompact?: boolean;
 }
 
 export interface TitleAndDropDownType {
@@ -70,3 +72,7 @@ export interface DropdownTileType {
 }
 
 export type ModalTypes = "" | "createDropdown" | "editDropdown";
+export interface PromptContentProps {
+  content: string;
+  dropdownsList: TitleAndDropDownType;
+}

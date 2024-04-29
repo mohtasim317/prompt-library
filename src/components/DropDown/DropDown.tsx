@@ -20,6 +20,8 @@ const Dropdown = forwardRef(function Dropdown(
     dropdownType,
     setDropdownVisible,
     title,
+    disableOpenOnFocus,
+    isCompact,
   }: DropdownProps,
   inputRef
 ) {
@@ -70,11 +72,13 @@ const Dropdown = forwardRef(function Dropdown(
               { dropdownOption: newSelectedValue.inputValue as string },
             ]);
           }
+          setInputValue(newSelectedValue.inputValue);
         } else {
           seSelectedtValue(newSelectedValue);
           if (DropdownTitleMap.promptSelector === title) {
             setPromptDropdownSelection(newSelectedValue?.dropdownOption);
           }
+          setInputValue(newSelectedValue?.dropdownOption || "");
         }
       }}
       filterOptions={(options, params) => {
@@ -129,11 +133,17 @@ const Dropdown = forwardRef(function Dropdown(
       renderInput={(params) => (
         <TextField
           {...params}
-          label="Add Dropdown Options:"
+          label={isCompact ? "" : "Add Dropdown Options:"}
           autoFocus
+          placeholder={isCompact ? `Select a ${title}` : ""}
           inputRef={inputRef} // need to access the input ref from the prompt form to focus the input when visible
           inputProps={{
             ...params.inputProps,
+            style: {
+              ...(isCompact
+                ? { height: 12, padding: 0, width: "fit-content", fontSize: 14 }
+                : {}),
+            },
             onChange: (event) => {
               setInputValue(event.currentTarget.value);
             },
@@ -144,7 +154,7 @@ const Dropdown = forwardRef(function Dropdown(
         dropdownType === dropdownTypeMap.singleSelect ? true : false
       }
       onBlur={handleOnBlur}
-      openOnFocus
+      openOnFocus={disableOpenOnFocus ? false : true}
     />
   );
 });
