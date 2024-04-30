@@ -18,6 +18,7 @@ function PromptForm() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [isDropdownVisible, setDropdownVisible] = useState(false);
+  const [isEditable, setIsEditable] = useState(false);
   const { dropdownsList } = useContext(
     DropdownContext
   ) as DropdownContextInterface;
@@ -39,18 +40,42 @@ function PromptForm() {
   };
 
   const savePrompt = () => {
-    const id = promptList.length ? promptList[promptList.length - 1].id + 1 : 1;
-    const newPromptData: MockDataType = {
-      id,
-      title,
-      text: content,
-    };
-    const newPromptList = [...promptList, newPromptData];
+    let newPromptList;
+    if (selectedId) {
+      newPromptList = promptList.map((item) => {
+        if (item.id === selectedId) {
+          item.title = title;
+          item.text = content;
+        }
+        return item;
+      });
+      setIsEditable(false);
+    } else {
+      const id = promptList.length
+        ? promptList[promptList.length - 1].id + 1
+        : 1;
+      const newPromptData: MockDataType = {
+        id,
+        title,
+        text: content,
+      };
+      newPromptList = [...promptList, newPromptData];
+      setSelectedId(id);
+    }
     setPromptList(newPromptList);
-    setSelectedId(id);
-    setContent(""); // why is the title doesnt need to be cleared?
+    setContent("");
+    setTitle("");
   };
 
+  const getFormData = (): MockDataType => {
+    return promptList.filter((item) => item.id === selectedId)[0];
+  };
+  const enableEditMode = () => {
+    setIsEditable(true);
+    const formData = getFormData();
+    setTitle(formData.title);
+    setContent(formData.text);
+  };
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -74,16 +99,18 @@ function PromptForm() {
   }, [promptDropdownSelection]);
 
   let formContent;
-  if (selectedId) {
-    const formData: MockDataType = promptList.filter(
-      (item) => item.id === selectedId
-    )[0];
+  if (selectedId && !isEditable) {
+    const formData = getFormData();
     formContent = (
       <>
         <div className="InsertTitle">{formData.title}</div>
-        <PromptContent content={formData.text} dropdownsList={dropdownsList} />
+        <PromptContent
+          content={formData.text}
+          dropdownsList={dropdownsList}
+          promptTitle={title}
+        />
         <div className="PromptFooter">
-          <button>Edit Template</button>
+          <button onClick={enableEditMode}>Edit Template</button>
           <button
             onClick={async () => {
               await navigator.clipboard.writeText(formData.text);
@@ -102,6 +129,7 @@ function PromptForm() {
           placeholder="Enter a title..."
           autoFocus
           onChange={handleTitleChange}
+          value={title}
         ></input>
         <div className="TextareaContainer">
           <textarea

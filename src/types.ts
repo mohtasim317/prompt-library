@@ -75,4 +75,5 @@ export type ModalTypes = "" | "createDropdown" | "editDropdown";
 export interface PromptContentProps {
   content: string;
   dropdownsList: TitleAndDropDownType;
+  promptTitle: string;
 }

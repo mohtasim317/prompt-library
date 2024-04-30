@@ -3,11 +3,15 @@ import { Dropdown } from "../Components";
 import { PromptContentProps } from "../../types";
 import { dropdownTypeMap } from "../../constants";
 
-function PromptContent(props: PromptContentProps) {
-  const { content, dropdownsList } = props;
+function PromptContent({
+  content,
+  dropdownsList,
+  promptTitle,
+}: PromptContentProps) {
   function parsePromptContent(content: string) {
     const promptContentChildren = [];
     let currentStr: string = "";
+    let dropdownIndex = 0;
     for (let i = 0; i < content.length; i++) {
       if (content[i] === "[") {
         promptContentChildren.push(currentStr);
@@ -16,8 +20,10 @@ function PromptContent(props: PromptContentProps) {
       } else if (content[i] === "]") {
         if (currentStr && dropdownsList[currentStr]) {
           // insert <Dropdown> with props based on that title
+          dropdownIndex++;
           promptContentChildren.push(
             createElement(Dropdown, {
+              key: promptTitle + "-" + dropdownIndex,
               title: currentStr,
               currentDropdownOptions: dropdownsList[currentStr],
               dropdownType: dropdownTypeMap.singleSelect,
@@ -26,6 +32,7 @@ function PromptContent(props: PromptContentProps) {
             })
           );
         }
+        currentStr = "";
         continue;
       }
       currentStr += content[i];
