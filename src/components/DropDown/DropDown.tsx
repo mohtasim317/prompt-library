@@ -72,7 +72,7 @@ const Dropdown = forwardRef(function Dropdown(
               { dropdownOption: newSelectedValue.inputValue as string },
             ]);
           }
-          setInputValue(newSelectedValue.inputValue);
+          setInputValue("");
         } else {
           setSelectedValue(newSelectedValue);
           if (DropdownTitleMap.promptSelector === title) {
