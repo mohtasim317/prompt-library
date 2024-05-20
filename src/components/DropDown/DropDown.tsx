@@ -25,7 +25,7 @@ const Dropdown = forwardRef(function Dropdown(
   }: DropdownProps,
   inputRef
 ) {
-  const [selectedValue, seSelectedtValue] = useState<DropdownOptionType | null>(
+  const [selectedValue, setSelectedValue] = useState<DropdownOptionType | null>(
     null
   );
   const [inputValue, setInputValue] = useState<string>("");
@@ -44,7 +44,7 @@ const Dropdown = forwardRef(function Dropdown(
   const handleOnBlur = () => {
     if (dropdownType === dropdownTypeMap.singleSelect && setDropdownVisible) {
       setDropdownVisible(false);
-      seSelectedtValue(null);
+      setSelectedValue(null);
       setInputValue(""); // clears the actual value in the input that gets set after a selection was made
     }
   };
@@ -59,11 +59,11 @@ const Dropdown = forwardRef(function Dropdown(
       className={className}
       onChange={(event, newSelectedValue) => {
         if (typeof newSelectedValue === "string") {
-          seSelectedtValue({
+          setSelectedValue({
             dropdownOption: newSelectedValue,
           });
         } else if (newSelectedValue && newSelectedValue.inputValue) {
-          seSelectedtValue({
+          setSelectedValue({
             dropdownOption: newSelectedValue.inputValue,
           });
           if (setCurrentDropdownOptions) {
@@ -74,7 +74,7 @@ const Dropdown = forwardRef(function Dropdown(
           }
           setInputValue(newSelectedValue.inputValue);
         } else {
-          seSelectedtValue(newSelectedValue);
+          setSelectedValue(newSelectedValue);
           if (DropdownTitleMap.promptSelector === title) {
             setPromptDropdownSelection(newSelectedValue?.dropdownOption);
           }
